@@ -1,0 +1,44 @@
+<div class="cargo-page">
+  <button
+    mat-raised-button
+    class="add-cargo-btn"
+    color="primary"
+    (click)="openNewCargoDialog()"
+  >Add cargo</button>
+
+  <table mat-table [dataSource]="cargos" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="pickupLocation">
+      <th mat-header-cell *matHeaderCellDef> Pickup location </th>
+      <td mat-cell *matCellDef="let element"> {{element.pickupLocation}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deliveryLocation">
+      <th mat-header-cell *matHeaderCellDef> Delivery location </th>
+      <td mat-cell *matCellDef="let element"> {{element.deliveryLocation}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="pickupDate">
+      <th mat-header-cell *matHeaderCellDef> Pickup date </th>
+      <td mat-cell *matCellDef="let element"> {{element.pickupDate | date: 'longDate'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deliveryDate">
+      <th mat-header-cell *matHeaderCellDef> Delivery date </th>
+      <td mat-cell *matCellDef="let element"> {{element.deliveryDate | date: 'longDate'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="companies">
+      <th mat-header-cell *matHeaderCellDef> Companies </th>
+      <td mat-cell *matCellDef="let element"> {{getCompanyNames(element.companies)}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="fields"></tr>
+    <tr mat-row *matRowDef="let row; columns: fields;"></tr>
+  </table>
+</div>

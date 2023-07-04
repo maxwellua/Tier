@@ -1,0 +1,53 @@
+<div>
+  <h2 mat-dialog-title>Add new cargo</h2>
+
+  <mat-dialog-content [formGroup]="form" class="cargo-dialog">
+
+    <mat-form-field>
+      <input matInput
+             placeholder="Description"
+             formControlName="description">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             placeholder="Pickup Location"
+             formControlName="pickupLocation">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             placeholder="Delivery Location"
+             formControlName="deliveryLocation">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Pickup date</mat-label>
+      <input matInput [matDatepicker]="pickup" formControlName="pickupDate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="pickup"></mat-datepicker-toggle>
+      <mat-datepicker #pickup></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Delivery date</mat-label>
+      <input matInput [matDatepicker]="delivery" formControlName="deliveryDate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="delivery"></mat-datepicker-toggle>
+      <mat-datepicker #delivery></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Company</mat-label>
+      <mat-select multiple formControlName="companies">
+        <mat-option *ngFor="let company of companies" [value]="company">{{company.companyName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="action-buttons">
+    <button mat-raised-button (click)="closeDialog()">Close</button>
+    <button mat-raised-button color="primary" (click)="addCargo()">Add</button>
+  </mat-dialog-actions>
+</div>

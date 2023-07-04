@@ -1,11 +1,8 @@
-.container {
+.cargo-dialog {
   display: flex;
   flex-direction: column;
 }
 
-.navbar {
-  display: flex;
+.action-buttons {
   justify-content: center;
-
-  margin: 20px;
 }
